@@ -4,7 +4,7 @@
 #include "config/display.h"
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
-uint8_t dinossaur[8] = {0b00000, 0b00111, 0b00111, 0b10110, 0b11110, 0b01010, 0b01010, 0b00000};
+uint8_t dinossaur[8] = {0x0, 0x7, 0x5, 0x7, 0x16, 0x1E, 0xA, 0xA};
 
 void drawDino();
 
