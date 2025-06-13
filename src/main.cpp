@@ -2,9 +2,9 @@
 #include <Wire.h>
 #include <LiquidCrystal.h>
 #include "display.h"
+#include "dino.h"
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
-uint8_t dinossaur[8] = {0x0, 0x7, 0x5, 0x7, 0x16, 0x1E, 0xA, 0xA};
 
 void drawDino();
 
@@ -14,7 +14,9 @@ void setup() {
   analogWrite(CONTRAST_PIN, CONTRAST);
   lcd.begin(20,4);
   lcd.clear();
-  lcd.createChar(0, dinossaur);
+  lcd.createChar(0, dino_standing);
+  lcd.createChar(1, dino_left_leg);
+  lcd.createChar(2, dino_right_leg);
 }
 
 void loop() {
@@ -24,7 +26,9 @@ void loop() {
 
 void drawDino(void) {
   lcd.clear();
-  lcd.setCursor(0, 1);
-  lcd.print(char(0));
+  for (uint8_t i = 0; i < 3; i++) {
+    lcd.setCursor(i, 1);
+    lcd.print(char(i));
+  }
   delay(1000);
 }
