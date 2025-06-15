@@ -2,24 +2,28 @@
 #include <Wire.h>
 #include <LiquidCrystal.h>
 #include "display.h"
+#include "render.h"
 #include "dino.h"
 #include "obstacles.h"
 
 #define ASSET_N 6
 
-LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
+Dino dino = {
+  .x = 0,
+  .y = 1,
+  .state = GROUND,
+  .sprite = MEM_DINO_STANDING,
+};
 
-void drawDino();
+LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(CONTRAST_PIN, OUTPUT);
   analogWrite(CONTRAST_PIN, CONTRAST);
-  lcd.begin(20,4);
+  lcd.begin(16,2);
   lcd.clear();
-  lcd.createChar(0, dino_standing);
-  lcd.createChar(1, dino_left_leg);
-  lcd.createChar(2, dino_right_leg);
+  loadSprites();
   lcd.createChar(3, cacti_large);
   lcd.createChar(4, cacti_small);
   lcd.createChar(5, bird);
@@ -27,14 +31,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  drawDino();
-}
-
-void drawDino(void) {
-  lcd.clear();
-  for (uint8_t i = 0; i < ASSET_N; i++) {
-    lcd.setCursor(i, 1);
-    lcd.print(char(i));
-  }
-  delay(1000 / ASSET_N);
+  animateDino(&dino);
+  renderGame(&dino);
 }
