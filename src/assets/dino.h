@@ -7,6 +7,11 @@
 #define MEM_DINO_RIGHT_LEG 1
 #define MEM_DINO_STANDING 2
 
+// dino sprete positions
+#define POS_DINO_X 0
+#define POS_DINO_GROUND_Y 1
+#define POS_DINO_AIR_Y 0
+
 // dino
 // sprites
 extern uint8_t dino_left_leg[8];
