@@ -14,12 +14,16 @@ void loadSprites() {
   lcd.createChar(MEM_OBS_BIRD_DOWN, bird_down);
   lcd.createChar(MEM_OBS_BIRD_UP, bird_up);
 }
-void renderGame(const Dino* dino, const Obstacle* obstacle) {
+
+void renderGame(const Dino* dino, const Obstacle* obstacles, size_t obstacle_count) {
   if (millis() - _last_render >= GAME_TIME) {
     lcd.setCursor(dino->x, dino->y);
     lcd.print(char(dino->sprite));
-    lcd.setCursor(obstacle->x, 1);
-    lcd.print(char(obstacle->sprite));
+
+    for (size_t i = 0; i < obstacle_count; i++) {
+      lcd.setCursor(obstacles[i].x, 1);
+      lcd.print(char(obstacles[i].sprite));
+    }
 
     _last_render = millis();
   }
