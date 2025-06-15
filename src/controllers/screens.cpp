@@ -4,9 +4,8 @@
 #include "obstacles.h"
 
 extern LiquidCrystal lcd;
-extern Dino dino;
 extern Obstacle obstacles[MAX_OBSTACLES];
-extern Obstacle* birds[2];
+Obstacle* birds[2] = { &obstacles[2], &obstacles[3] };
 
 const char* _title = "ARDUDINO UNO";
 
@@ -29,12 +28,16 @@ screens initialScreen() {
   return INITIAL;
 }
 
-screens gameScreen() {
-  animateDino(&dino);
+screens gameScreen(Dino* dino, Obstacle* obstacles) {
+  animateDino(dino);
   animateBird(birds, 2);
   randomObstacleSpawn(obstacles, MAX_OBSTACLES);
   moveObstacles(obstacles, MAX_OBSTACLES);
-  renderGame(&dino, obstacles, MAX_OBSTACLES);
+  renderGame(dino, obstacles, MAX_OBSTACLES);
 
   return GAME;
+}
+
+screens endScreen() {
+
 }

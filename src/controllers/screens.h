@@ -11,5 +11,5 @@ typedef enum {
 } screens;
 
 screens initialScreen();
-screens gameScreen();
+screens gameScreen(Dino* dino, Obstacle* obstacles);
 screens endScreen();

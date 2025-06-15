@@ -13,8 +13,8 @@
 #define POS_OBS_INITIAL_X 20
 
 // spawn times
-#define SPAWN_TIMER_MIN 1000
-#define SPAWN_TIMER_MAX 5000
+#define SPAWN_TIMER_MIN 3000
+#define SPAWN_TIMER_MAX 7000
 
 // cacti
 extern uint8_t cacti_large[8];

@@ -45,20 +45,27 @@ void moveObstacles(Obstacle* obstacles, size_t obstacle_count) {
 }
 
 void randomObstacleSpawn(Obstacle* obstacles, size_t obstacle_count) {
-  if (millis() - _last_spawn >= (unsigned long)(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)) {
+  if (millis() - _last_spawn >= (unsigned long)random(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)) {
     bool spawned = false;
-    bool allSpawned = true;
+    size_t inactives = 0;
 
-    for (size_t i = 0; i < obstacle_count; i++) if (obstacles[i].active == false) allSpawned = false;
+    for (size_t i = 0; i < obstacle_count; i++) if (obstacles[i].active == false) inactives++;
     
-    while (!spawned && !allSpawned) {
-      Obstacle* obstacle = &obstacles[random(0, obstacle_count - 1)];
-      if (!obstacle->active) {
-        obstacle->active = true;
-        spawned = true;
+    if (!spawned) {
+      size_t found = 0;
+      size_t target_index = random(0, inactives);
+      for (size_t i = 0; i < obstacle_count; i++) {
+        if (!obstacles[i].active) {
+          if (found == target_index) {
+            obstacles[i].active = true;
+            break;
+          }
+
+          found++;
+        }
       }
     }
-
+    
     _last_spawn = millis();
   }
 }

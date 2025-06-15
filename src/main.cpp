@@ -18,8 +18,6 @@ Obstacle obstacles[MAX_OBSTACLES] = {
   {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_BIRD_DOWN, false},
 };
 
-Obstacle* birds[2] = {&obstacles[2], &obstacles[3]};
-
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
 screens currentScreen;
@@ -38,5 +36,5 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  currentScreen = gameScreen();
+  currentScreen = gameScreen(&dino, obstacles);
 }
