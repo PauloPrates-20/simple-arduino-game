@@ -15,10 +15,10 @@ Dino dino = {
 };
 
 Obstacle obstacles[MAX_OBSTACLES] = {
-  {25, 25, MEM_OBS_CACTI_SMALL, true},
-  {20, 20, MEM_OBS_CACTI_LARGE, true},
-  {15, 15,  MEM_OBS_BIRD_DOWN, true},
-  {27, 27, MEM_OBS_BIRD_DOWN, true},
+  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_CACTI_SMALL, false},
+  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_CACTI_LARGE, false},
+  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X,  MEM_OBS_BIRD_DOWN, false},
+  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_BIRD_DOWN, false},
 };
 
 Obstacle* birds[2] = {&obstacles[2], &obstacles[3]};

@@ -9,7 +9,7 @@
 #define MEM_OBS_BIRD_DOWN 5
 #define MEM_OBS_BIRD_UP 6
 
-#define POS_OBS_INITIAL 20
+#define POS_OBS_INITIAL_X 20
 
 // cacti
 extern uint8_t cacti_large[8];
