@@ -9,6 +9,7 @@
 #define MEM_OBS_BIRD_DOWN 5
 #define MEM_OBS_BIRD_UP 6
 
+// obstacle initial positions
 #define POS_OBS_INITIAL_X 20
 
 // cacti
