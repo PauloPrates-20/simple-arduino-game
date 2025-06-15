@@ -15,7 +15,7 @@ Dino dino = {
 };
 
 Obstacle obstacles[MAX_OBSTACLES] = {
-  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_CACTI_SMALL, false},
+  {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_CACTI_SMALL, true},
   {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_CACTI_LARGE, false},
   {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X,  MEM_OBS_BIRD_DOWN, false},
   {POS_OBS_INITIAL_X, POS_OBS_INITIAL_X, MEM_OBS_BIRD_DOWN, false},
@@ -38,6 +38,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   animateDino(&dino);
   animateBird(birds, 2);
+  randomObstacleSpawn(obstacles, MAX_OBSTACLES);
   moveObstacles(obstacles, MAX_OBSTACLES);
   renderGame(&dino, obstacles, MAX_OBSTACLES);
 }

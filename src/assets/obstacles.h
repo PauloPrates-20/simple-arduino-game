@@ -12,6 +12,10 @@
 // obstacle initial positions
 #define POS_OBS_INITIAL_X 20
 
+// spawn times
+#define SPAWN_TIMER_MIN 1000
+#define SPAWN_TIMER_MAX 5000
+
 // cacti
 extern uint8_t cacti_large[8];
 extern uint8_t cacti_small[8];
@@ -29,3 +33,4 @@ typedef struct {
 
 void animateBird(Obstacle** birds, size_t bird_count);
 void moveObstacles(Obstacle* obstacles, size_t obstacle_count);
+void randomObstacleSpawn(Obstacle* obstacles, size_t obstacle_count);

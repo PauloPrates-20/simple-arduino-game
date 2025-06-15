@@ -4,6 +4,7 @@
 
 static unsigned long _last_sprite = 0;
 static unsigned long _last_move = 0;
+static unsigned long _last_spawn = 0;
 
 // cacti
 uint8_t cacti_large[8] = {0b00100, 0b00101, 0b10101, 0b10101, 0b10111, 0b11100, 0b00100};
@@ -40,5 +41,24 @@ void moveObstacles(Obstacle* obstacles, size_t obstacle_count) {
     }
 
     _last_move = millis();
+  }
+}
+
+void randomObstacleSpawn(Obstacle* obstacles, size_t obstacle_count) {
+  if (millis() - _last_spawn >= (unsigned long)(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)) {
+    bool spawned = false;
+    bool allSpawned = true;
+
+    for (size_t i = 0; i < obstacle_count; i++) if (obstacles[i].active == false) allSpawned = false;
+    
+    while (!spawned && !allSpawned) {
+      Obstacle* obstacle = &obstacles[random(0, obstacle_count - 1)];
+      if (!obstacle->active) {
+        obstacle->active = true;
+        spawned = true;
+      }
+    }
+
+    _last_spawn = millis();
   }
 }
