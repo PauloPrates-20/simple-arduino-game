@@ -2,10 +2,7 @@
 #include <Wire.h>
 #include <LiquidCrystal.h>
 #include "display.h"
-#include "render.h"
-
-#define ASSET_N 6
-#define MAX_OBSTACLES 4
+#include "screens.h"
 
 Dino dino = {
   .x = 0,
@@ -25,6 +22,8 @@ Obstacle* birds[2] = {&obstacles[2], &obstacles[3]};
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
+screens currentScreen;
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(CONTRAST_PIN, OUTPUT);
@@ -32,13 +31,12 @@ void setup() {
   lcd.begin(16,2);
   lcd.clear();
   loadSprites();
+  currentScreen = initialScreen();
+  delay(3000);
+  lcd.clear();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  animateDino(&dino);
-  animateBird(birds, 2);
-  randomObstacleSpawn(obstacles, MAX_OBSTACLES);
-  moveObstacles(obstacles, MAX_OBSTACLES);
-  renderGame(&dino, obstacles, MAX_OBSTACLES);
+  currentScreen = gameScreen();
 }
