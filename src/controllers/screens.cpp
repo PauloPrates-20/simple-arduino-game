@@ -5,9 +5,10 @@
 
 extern LiquidCrystal lcd;
 extern Obstacle obstacles[MAX_OBSTACLES];
-Obstacle* birds[2] = { &obstacles[2], &obstacles[3] };
+Obstacle* birds[MAX_OBSTACLES / 2] = { &obstacles[2], &obstacles[3], &obstacles[6], &obstacles[7] };
 
 const char* _title = "ARDUDINO UNO";
+const char* _ending = "GAME OVER!!!";
 
 screens initialScreen() {
   lcd.setCursor(POS_DINO_X, POS_DINO_GROUND_Y);
@@ -30,7 +31,7 @@ screens initialScreen() {
 
 screens gameScreen(Dino* dino, Obstacle* obstacles) {
   animateDino(dino);
-  animateBird(birds, 2);
+  animateBird(birds, MAX_OBSTACLES / 2);
   randomObstacleSpawn(obstacles, MAX_OBSTACLES);
   moveObstacles(obstacles, MAX_OBSTACLES);
   renderGame(dino, obstacles, MAX_OBSTACLES);
@@ -39,5 +40,11 @@ screens gameScreen(Dino* dino, Obstacle* obstacles) {
 }
 
 screens endScreen() {
+  for (size_t i = 0; i < strlen(_ending); i++) {
+    lcd.setCursor(((16 - strlen(_ending)) / 2) + i, 0);
+    lcd.print(_ending[i]);
+    delay(300);
+  }
 
+  return END;
 }

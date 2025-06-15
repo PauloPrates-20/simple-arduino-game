@@ -2,7 +2,7 @@
 
 #include "render.h"
 
-#define MAX_OBSTACLES 4
+#define MAX_OBSTACLES 8
 
 typedef enum {
   INITIAL,
