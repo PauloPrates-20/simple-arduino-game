@@ -21,8 +21,12 @@ void renderGame(const Dino* dino, const Obstacle* obstacles, size_t obstacle_cou
     lcd.print(char(dino->sprite));
 
     for (size_t i = 0; i < obstacle_count; i++) {
-      lcd.setCursor(obstacles[i].x, 1);
-      lcd.print(char(obstacles[i].sprite));
+      if (obstacles[i].active) {
+        lcd.setCursor(obstacles[i].last_x, 1);
+        lcd.print(" ");
+        lcd.setCursor(obstacles[i].x, 1);
+        lcd.print(char(obstacles[i].sprite));
+      }
     }
 
     _last_render = millis();

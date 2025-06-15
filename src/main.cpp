@@ -15,10 +15,10 @@ Dino dino = {
 };
 
 Obstacle obstacles[MAX_OBSTACLES] = {
-  {10, MEM_OBS_CACTI_SMALL},
-  {15, MEM_OBS_CACTI_LARGE},
-  {5, MEM_OBS_BIRD_DOWN},
-  {7, MEM_OBS_BIRD_DOWN},
+  {25, 25, MEM_OBS_CACTI_SMALL, true},
+  {20, 20, MEM_OBS_CACTI_LARGE, true},
+  {15, 15,  MEM_OBS_BIRD_DOWN, true},
+  {27, 27, MEM_OBS_BIRD_DOWN, true},
 };
 
 Obstacle* birds[2] = {&obstacles[2], &obstacles[3]};
@@ -38,5 +38,6 @@ void loop() {
   // put your main code here, to run repeatedly:
   animateDino(&dino);
   animateBird(birds, 2);
+  moveObstacles(obstacles, MAX_OBSTACLES);
   renderGame(&dino, obstacles, MAX_OBSTACLES);
 }

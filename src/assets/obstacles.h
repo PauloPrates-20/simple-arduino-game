@@ -17,8 +17,11 @@ extern uint8_t bird_down[8];
 extern uint8_t bird_up[8];
 
 typedef struct {
-  uint8_t x;
+  int8_t x;
+  int8_t last_x;
   uint8_t sprite;
+  bool active;
 } Obstacle;
 
 void animateBird(Obstacle** birds, size_t bird_count);
+void moveObstacles(Obstacle* obstacles, size_t obstacle_count);
