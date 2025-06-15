@@ -5,7 +5,7 @@
 #include "render.h"
 
 #define ASSET_N 6
-#define MAX_OBSTACLES 3
+#define MAX_OBSTACLES 4
 
 Dino dino = {
   .x = 0,
@@ -18,7 +18,10 @@ Obstacle obstacles[MAX_OBSTACLES] = {
   {10, MEM_OBS_CACTI_SMALL},
   {15, MEM_OBS_CACTI_LARGE},
   {5, MEM_OBS_BIRD_DOWN},
+  {7, MEM_OBS_BIRD_DOWN},
 };
+
+Obstacle* birds[2] = {&obstacles[2], &obstacles[3]};
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
@@ -34,6 +37,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   animateDino(&dino);
-  animateBird(&obstacles[2]);
+  animateBird(birds, 2);
   renderGame(&dino, obstacles, MAX_OBSTACLES);
 }
