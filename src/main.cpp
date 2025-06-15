@@ -3,6 +3,9 @@
 #include <LiquidCrystal.h>
 #include "display.h"
 #include "dino.h"
+#include "obstacles.h"
+
+#define ASSET_N 6
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
@@ -17,6 +20,9 @@ void setup() {
   lcd.createChar(0, dino_standing);
   lcd.createChar(1, dino_left_leg);
   lcd.createChar(2, dino_right_leg);
+  lcd.createChar(3, cacti_large);
+  lcd.createChar(4, cacti_small);
+  lcd.createChar(5, bird);
 }
 
 void loop() {
@@ -26,9 +32,9 @@ void loop() {
 
 void drawDino(void) {
   lcd.clear();
-  for (uint8_t i = 0; i < 3; i++) {
+  for (uint8_t i = 0; i < ASSET_N; i++) {
     lcd.setCursor(i, 1);
     lcd.print(char(i));
   }
-  delay(1000);
+  delay(1000 / ASSET_N);
 }

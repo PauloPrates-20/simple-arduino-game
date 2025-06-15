@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 
-uint8_t dino_standing[8] = {0x0, 0x7, 0x5, 0x7, 0x16, 0x1E, 0xA, 0xA};
-uint8_t dino_left_leg[8] = {0x0, 0x7, 0x5, 0x7, 0x16, 0x1E, 0xA, 0x8};
-uint8_t dino_right_leg[8] = {0x0, 0x7, 0x5, 0x7, 0x16, 0x1E, 0xA, 0x2};
+// dino
+uint8_t dino_standing[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b01010};
+uint8_t dino_left_leg[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b01000};
+uint8_t dino_right_leg[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b00010};
