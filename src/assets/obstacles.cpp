@@ -32,7 +32,11 @@ void moveObstacles(Obstacle* obstacles, size_t obstacle_count) {
         obstacles[i].x -= 1;
       }
 
-      if (obstacles[i].x < 0) obstacles[i].active = false;
+      if (obstacles[i].x < 0) {
+        obstacles[i].active = false;
+        obstacles[i].x = POS_OBS_INITIAL;
+        obstacles[i].last_x = POS_OBS_INITIAL;
+      }
     }
 
     _last_move = millis();

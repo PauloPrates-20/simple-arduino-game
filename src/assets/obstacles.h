@@ -3,10 +3,13 @@
 #include <stdint.h>
 #include <stddef.h>
 
+// obstacle sprites locations in LCD display memory
 #define MEM_OBS_CACTI_LARGE 3
 #define MEM_OBS_CACTI_SMALL 4
 #define MEM_OBS_BIRD_DOWN 5
 #define MEM_OBS_BIRD_UP 6
+
+#define POS_OBS_INITIAL 20
 
 // cacti
 extern uint8_t cacti_large[8];
