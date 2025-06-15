@@ -1,8 +1,33 @@
 #pragma once
 
 #include <stdint.h>
+#include "frame.h"
+
+// sprite position in LCD display memory
+#define MEM_DINO_LEFT_LEG 0
+#define MEM_DINO_RIGHT_LEG 1
+#define MEM_DINO_STANDING 2
 
 // dino
-uint8_t dino_standing[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b01010};
-uint8_t dino_left_leg[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b01000};
-uint8_t dino_right_leg[8] = {0b00000, 0b00111, 0b00101, 0b00111, 0b10110, 0b11110, 0b01010, 0b00010};
+// sprites
+extern uint8_t dino_left_leg[8];
+extern uint8_t dino_right_leg[8];
+extern uint8_t dino_standing[8];
+
+// states
+// movement
+typedef enum {
+  GROUND,
+  MID,
+  AIR,
+} dino_state;
+
+// dino object
+typedef struct {
+  uint8_t x;
+  uint8_t y;
+  dino_state state;
+  uint8_t sprite;
+} Dino;
+
+void animateDino(Dino* dino);
