@@ -1,4 +1,5 @@
 #include "dino.h"
+#include "frame.h"
 #include <Arduino.h>
 
 static unsigned long _last_time = 0;

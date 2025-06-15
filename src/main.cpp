@@ -3,8 +3,6 @@
 #include <LiquidCrystal.h>
 #include "display.h"
 #include "render.h"
-#include "dino.h"
-#include "obstacles.h"
 
 #define ASSET_N 6
 
@@ -13,6 +11,11 @@ Dino dino = {
   .y = 1,
   .state = GROUND,
   .sprite = MEM_DINO_STANDING,
+};
+
+Obstacle bird = {
+  .x = 10,
+  .sprite = MEM_OBS_BIRD_DOWN,
 };
 
 LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
@@ -24,13 +27,11 @@ void setup() {
   lcd.begin(16,2);
   lcd.clear();
   loadSprites();
-  lcd.createChar(3, cacti_large);
-  lcd.createChar(4, cacti_small);
-  lcd.createChar(5, bird);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   animateDino(&dino);
-  renderGame(&dino);
+  animateBird(&bird);
+  renderGame(&dino, &bird);
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdint.h>
-#include "frame.h"
 
 // sprite position in LCD display memory
 #define MEM_DINO_LEFT_LEG 0
