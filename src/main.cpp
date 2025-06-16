@@ -56,6 +56,7 @@ void loop() {
       if (!button) {
         lcd.clear();
         button = HIGH;
+        delay(300);
         currentScreen = gameScreen();
       }
       break;
