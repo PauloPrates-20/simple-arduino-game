@@ -35,6 +35,9 @@ screens gameScreen() {
   animateBird(birds, MAX_OBSTACLES / 2);
   randomObstacleSpawn(obstacles, MAX_OBSTACLES);
   moveObstacles(obstacles, MAX_OBSTACLES);
+
+  for (size_t i = 0; i < MAX_OBSTACLES; i++) if (checkCollision(&dino, obstacles[i].x)) return endScreen();
+
   renderGame(&dino, obstacles, MAX_OBSTACLES);
 
   return GAME;

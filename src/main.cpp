@@ -31,12 +31,7 @@ LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
 screens currentScreen;
 
-void startGame() {
-  lcd.clear();
-  button = HIGH;
-  delay(300);
-  currentScreen = gameScreen();
-}
+void startGame();
 
 void setup() {
   // put your setup code here, to run once:
@@ -69,4 +64,11 @@ void loop() {
       if (!button) startGame();
       break;
   }
+}
+
+void startGame() {
+  lcd.clear();
+  button = HIGH;
+  delay(300);
+  currentScreen = gameScreen();
 }

@@ -37,3 +37,9 @@ void jump(Dino* dino) {
     dino->state = GROUND;
   }
 }
+
+bool checkCollision(const Dino* dino, int8_t obstacle_x) {
+  if (dino->state == GROUND && dino->x == obstacle_x) return true;
+
+  return false;
+}

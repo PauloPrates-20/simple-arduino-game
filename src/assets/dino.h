@@ -37,3 +37,4 @@ typedef struct {
 
 void animateDino(Dino* dino);
 void jump(Dino* dino);
+bool checkCollision(const Dino* dino, int8_t obstacle_x);
