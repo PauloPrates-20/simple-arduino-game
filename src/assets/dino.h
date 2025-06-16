@@ -35,3 +35,4 @@ typedef struct {
 } Dino;
 
 void animateDino(Dino* dino);
+void jump(Dino* dino);

@@ -20,3 +20,19 @@ void animateDino(Dino* dino) {
   }
   else dino->sprite = MEM_DINO_STANDING;
 }
+
+void jump(Dino* dino) {
+  static uint8_t _jump_frames = 0;
+
+  if (dino->state == GROUND) {
+    dino->y = 0;
+    dino->state = AIR;
+    dino->sprite = MEM_DINO_STANDING;
+    _jump_frames = 5; 
+  }
+  else if (_jump_frames > 0) _jump_frames--;
+  else {
+    dino->y = 1;
+    dino->state = GROUND;
+  }
+}
