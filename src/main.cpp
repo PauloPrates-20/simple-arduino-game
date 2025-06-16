@@ -55,6 +55,7 @@ void loop() {
       renderGame(&dino, obstacles, MAX_OBSTACLES);
       if (!button) {
         lcd.clear();
+        button = HIGH;
         currentScreen = gameScreen();
       }
       break;
