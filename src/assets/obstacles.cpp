@@ -36,7 +36,7 @@ void moveObstacles(Obstacle* obstacles, size_t obstacle_count) {
       if (obstacles[i].x < 0) {
         obstacles[i].active = false;
         obstacles[i].x = POS_OBS_INITIAL_X;
-        obstacles[i].last_x = POS_OBS_INITIAL_X;
+        obstacles[i].last_x = 0;
       }
     }
 

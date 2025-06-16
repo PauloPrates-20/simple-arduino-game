@@ -29,7 +29,7 @@ void jump(Dino* dino) {
     dino->y = 0;
     dino->state = AIR;
     dino->sprite = MEM_DINO_STANDING;
-    _jump_frames = 5; 
+    _jump_frames = 15; 
   }
   else if (_jump_frames > 0) _jump_frames--;
   else {

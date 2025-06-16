@@ -24,7 +24,7 @@ screens initialScreen() {
   for (size_t i = 0; i < strlen(_title); i++) {
     lcd.setCursor(((16 - strlen(_title)) / 2) + i, 0);
     lcd.print(_title[i]);
-    delay(300);    
+    delay(150);    
   }
 
   return INITIAL;

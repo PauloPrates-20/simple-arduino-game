@@ -16,7 +16,7 @@ void loadSprites() {
   lcd.createChar(MEM_OBS_BIRD_UP, bird_up);
 }
 
-void renderGame(Dino* dino, const Obstacle* obstacles, size_t obstacle_count) {
+void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count) {
   if (millis() - _last_render >= GAME_TIME) {
     if (!button || dino->state != GROUND) {
       jump(dino);
@@ -36,6 +36,10 @@ void renderGame(Dino* dino, const Obstacle* obstacles, size_t obstacle_count) {
         lcd.print(" ");
         lcd.setCursor(obstacles[i].x, 1);
         lcd.print(char(obstacles[i].sprite));
+      } else {
+        lcd.setCursor(obstacles[i].last_x, 1);
+        lcd.print(" ");
+        obstacles[i].last_x = obstacles[i].x;
       }
     }
 

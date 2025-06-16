@@ -51,11 +51,12 @@ void loop() {
 
   switch (currentScreen) {
     case INITIAL:
-      while(!button) {
-        animateDino(&dino);
-        renderGame(&dino, obstacles, MAX_OBSTACLES);
+      animateDino(&dino);
+      renderGame(&dino, obstacles, MAX_OBSTACLES);
+      if (!button) {
+        lcd.clear();
+        currentScreen = gameScreen();
       }
-      currentScreen = gameScreen();
       break;
     case GAME:
       gameScreen();

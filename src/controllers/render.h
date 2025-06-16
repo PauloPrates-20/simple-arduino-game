@@ -5,4 +5,4 @@
 #include "stddef.h"
 
 void loadSprites();
-void renderGame(Dino* dino, const Obstacle* obstacles, size_t obsctacle_count);
+void renderGame(Dino* dino, Obstacle* obstacles, size_t obsctacle_count);
