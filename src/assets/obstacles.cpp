@@ -48,7 +48,12 @@ void randomObstacleSpawn(Obstacle* obstacles, size_t obstacle_count) {
   if (millis() - _last_spawn >= (unsigned long)random(SPAWN_TIMER_MIN, SPAWN_TIMER_MAX)) {
     size_t inactives = 0;
 
-    for (size_t i = 0; i < obstacle_count; i++) if (obstacles[i].active == false) inactives++;
+    for (size_t i = 0; i < obstacle_count; i++) {
+      if (obstacles[i].active && 20 - obstacles[i].x < 5) return;
+      if (!obstacles[i].active) inactives++;
+    }
+
+    if (inactives == 0) return;
     
     size_t found = 0;
     size_t target_index = random(0, inactives);
