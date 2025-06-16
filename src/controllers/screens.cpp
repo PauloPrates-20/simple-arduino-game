@@ -38,7 +38,7 @@ screens gameScreen() {
 
   for (size_t i = 0; i < MAX_OBSTACLES; i++) if (checkCollision(&dino, obstacles[i].x)) return endScreen();
 
-  renderGame(&dino, obstacles, MAX_OBSTACLES);
+  renderGame(&dino, obstacles, MAX_OBSTACLES, true);
 
   return GAME;
 }

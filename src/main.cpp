@@ -7,6 +7,7 @@
 #define BUTTON_PIN 13
 
 bool button = HIGH;
+int32_t score = 0;
 
 Dino dino = {
   .x = 0,
@@ -75,6 +76,7 @@ void resetGame() {
     obstacles[i].x = POS_OBS_INITIAL_X;
     obstacles[i].last_x = POS_OBS_INITIAL_X;
     obstacles[i].active = false;
+    score = 0;
   }
 }
 void startGame() {

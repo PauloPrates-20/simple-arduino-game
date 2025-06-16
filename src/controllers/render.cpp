@@ -4,7 +4,9 @@
 
 extern LiquidCrystal lcd;
 extern bool button;
+extern int32_t score;
 static unsigned long _last_render = 0;
+char _score[17] = "SCORE: 0";
 
 void loadSprites() {
   lcd.createChar(MEM_DINO_LEFT_LEG, dino_left_leg);
@@ -16,8 +18,14 @@ void loadSprites() {
   lcd.createChar(MEM_OBS_BIRD_UP, bird_up);
 }
 
-void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count) {
+void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count, bool show_score) {
   if (millis() - _last_render >= GAME_TIME) {
+    if (show_score) {
+      sprintf(_score, "SCORE: %ld", score);
+      lcd.setCursor((16 - strlen(_score)) / 2, 0);
+      lcd.print(_score);
+    }
+
     if (!button || dino->state != GROUND) {
       jump(dino);
     }
@@ -42,6 +50,8 @@ void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count) {
         obstacles[i].last_x = obstacles[i].x;
       }
     }
+
+    score++;
 
     _last_render = millis();
   }
