@@ -76,7 +76,6 @@ void resetGame() {
     obstacles[i].last_x = POS_OBS_INITIAL_X;
     obstacles[i].active = false;
   }
-  renderGame(&dino, obstacles, MAX_OBSTACLES);
 }
 void startGame() {
   lcd.clear();
