@@ -31,6 +31,13 @@ LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
 screens currentScreen;
 
+void startGame() {
+  lcd.clear();
+  button = HIGH;
+  delay(300);
+  currentScreen = gameScreen();
+}
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -53,17 +60,13 @@ void loop() {
     case INITIAL:
       animateDino(&dino);
       renderGame(&dino, obstacles, MAX_OBSTACLES);
-      if (!button) {
-        lcd.clear();
-        button = HIGH;
-        delay(300);
-        currentScreen = gameScreen();
-      }
+      if (!button) startGame();
       break;
     case GAME:
-      gameScreen();
+      currentScreen = gameScreen();
       break;
     case END:
+      if (!button) startGame();
       break;
   }
 }
