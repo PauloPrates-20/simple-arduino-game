@@ -4,6 +4,7 @@
 #include "obstacles.h"
 
 extern LiquidCrystal lcd;
+extern uint32_t score;
 extern Dino dino;
 extern Obstacle obstacles[MAX_OBSTACLES];
 Obstacle* birds[MAX_OBSTACLES / 2] = { &obstacles[2], &obstacles[3], &obstacles[6], &obstacles[7] };
@@ -24,7 +25,7 @@ screens initialScreen() {
   for (size_t i = 0; i < strlen(_title); i++) {
     lcd.setCursor(((16 - strlen(_title)) / 2) + i, 0);
     lcd.print(_title[i]);
-    delay(150);    
+    delay(200);    
   }
 
   return INITIAL;
@@ -44,10 +45,23 @@ screens gameScreen() {
 }
 
 screens endScreen() {
+  char _score[17];
+
   for (size_t i = 0; i < strlen(_ending); i++) {
     lcd.setCursor(((16 - strlen(_ending)) / 2) + i, 0);
     lcd.print(_ending[i]);
-    delay(300);
+    delay(200);
+  }
+
+  delay(1000);
+
+  sprintf(_score, "SCORE: %lu", score);
+  lcd.setCursor(0, 0);
+  lcd.print("               ");
+  for (size_t i = 0; i < strlen(_score); i++) {
+    lcd.setCursor(((16 - strlen(_score)) / 2) + i, 0);
+    lcd.print(_score[i]);
+    delay(200);
   }
 
   return END;

@@ -6,7 +6,6 @@ extern LiquidCrystal lcd;
 extern bool button;
 extern int32_t score;
 static unsigned long _last_render = 0;
-char _score[17] = "SCORE: 0";
 
 void loadSprites() {
   lcd.createChar(MEM_DINO_LEFT_LEG, dino_left_leg);
@@ -19,6 +18,8 @@ void loadSprites() {
 }
 
 void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count, bool show_score) {
+  char _score[17];
+
   if (millis() - _last_render >= GAME_TIME) {
     if (show_score) {
       sprintf(_score, "SCORE: %ld", score);
