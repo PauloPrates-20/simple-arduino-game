@@ -23,6 +23,7 @@ void animateDino(Dino* dino) {
 
 void jump(Dino* dino) {
   static uint8_t _jump_frames = 0;
+  dino->last_y = dino->y;
 
   if (dino->state == GROUND) {
     dino->y = 0;

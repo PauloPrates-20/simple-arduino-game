@@ -30,6 +30,7 @@ typedef enum {
 typedef struct {
   uint8_t x;
   uint8_t y;
+  uint8_t last_y;
   dino_state state;
   uint8_t sprite;
 } Dino;

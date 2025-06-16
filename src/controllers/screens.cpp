@@ -4,6 +4,7 @@
 #include "obstacles.h"
 
 extern LiquidCrystal lcd;
+extern Dino dino;
 extern Obstacle obstacles[MAX_OBSTACLES];
 Obstacle* birds[MAX_OBSTACLES / 2] = { &obstacles[2], &obstacles[3], &obstacles[6], &obstacles[7] };
 
@@ -29,12 +30,12 @@ screens initialScreen() {
   return INITIAL;
 }
 
-screens gameScreen(Dino* dino, Obstacle* obstacles) {
-  animateDino(dino);
+screens gameScreen() {
+  animateDino(&dino);
   animateBird(birds, MAX_OBSTACLES / 2);
   randomObstacleSpawn(obstacles, MAX_OBSTACLES);
   moveObstacles(obstacles, MAX_OBSTACLES);
-  renderGame(dino, obstacles, MAX_OBSTACLES);
+  renderGame(&dino, obstacles, MAX_OBSTACLES);
 
   return GAME;
 }

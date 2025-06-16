@@ -3,6 +3,7 @@
 #include <LiquidCrystal.h>
 
 extern LiquidCrystal lcd;
+extern bool button;
 static unsigned long _last_render = 0;
 
 void loadSprites() {
@@ -15,8 +16,17 @@ void loadSprites() {
   lcd.createChar(MEM_OBS_BIRD_UP, bird_up);
 }
 
-void renderGame(const Dino* dino, const Obstacle* obstacles, size_t obstacle_count) {
+void renderGame(Dino* dino, const Obstacle* obstacles, size_t obstacle_count) {
   if (millis() - _last_render >= GAME_TIME) {
+    if (!button || dino->state != GROUND) {
+      jump(dino);
+    }
+
+    if (dino->last_y != dino->y) {
+      lcd.setCursor(dino->x, dino->last_y);
+      lcd.print(" ");
+    }
+
     lcd.setCursor(dino->x, dino->y);
     lcd.print(char(dino->sprite));
 
