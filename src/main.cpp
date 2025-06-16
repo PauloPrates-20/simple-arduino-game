@@ -31,6 +31,7 @@ LiquidCrystal lcd(RS, ENABLE, D0, D1, D2, D3, D4, D5, D6, D7);
 
 screens currentScreen;
 
+void resetGame();
 void startGame();
 
 void setup() {
@@ -61,11 +62,22 @@ void loop() {
       currentScreen = gameScreen();
       break;
     case END:
-      if (!button) startGame();
+      if (!button) {
+        resetGame();
+        startGame();
+      }
       break;
   }
 }
 
+void resetGame() {
+  for (size_t i = 0; i < MAX_OBSTACLES; i++ ){
+    obstacles[i].x = POS_OBS_INITIAL_X;
+    obstacles[i].last_x = POS_OBS_INITIAL_X;
+    obstacles[i].active = false;
+  }
+  renderGame(&dino, obstacles, MAX_OBSTACLES);
+}
 void startGame() {
   lcd.clear();
   button = HIGH;

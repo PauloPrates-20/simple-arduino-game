@@ -49,7 +49,7 @@ void randomObstacleSpawn(Obstacle* obstacles, size_t obstacle_count) {
     size_t inactives = 0;
 
     for (size_t i = 0; i < obstacle_count; i++) {
-      if (obstacles[i].active && 20 - obstacles[i].x < 5) return;
+      if (obstacles[i].active && POS_OBS_INITIAL_X - obstacles[i].x <= 5) return;
       if (!obstacles[i].active) inactives++;
     }
 
