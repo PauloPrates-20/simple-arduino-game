@@ -73,6 +73,7 @@ void loop() {
 
 void resetGame() {
   for (size_t i = 0; i < MAX_OBSTACLES; i++ ){
+    dino.y = 1;
     obstacles[i].x = POS_OBS_INITIAL_X;
     obstacles[i].last_x = POS_OBS_INITIAL_X;
     obstacles[i].active = false;

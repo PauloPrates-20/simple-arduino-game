@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include "obstacles.h"
 
 // sprite position in LCD display memory
 #define MEM_DINO_LEFT_LEG 0
@@ -36,5 +37,5 @@ typedef struct {
 } Dino;
 
 void animateDino(Dino* dino);
-void jump(Dino* dino);
+void jump(Dino* dino, Obstacle* obstacles, size_t obstacle_count);
 bool checkCollision(const Dino* dino, int8_t obstacle_x);

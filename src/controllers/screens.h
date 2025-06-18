@@ -13,3 +13,4 @@ typedef enum {
 screens initialScreen();
 screens gameScreen();
 screens endScreen();
+void clearLine(uint8_t y);

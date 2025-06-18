@@ -21,7 +21,7 @@ void animateDino(Dino* dino) {
   else dino->sprite = MEM_DINO_STANDING;
 }
 
-void jump(Dino* dino) {
+void jump(Dino* dino, Obstacle* obstacles, size_t obstacle_count) {
   static uint8_t _jump_frames = 0;
   dino->last_y = dino->y;
 
@@ -33,8 +33,16 @@ void jump(Dino* dino) {
   }
   else if (_jump_frames > 0) _jump_frames--;
   else {
-    dino->y = 1;
+    bool collision_iminent = false;
+
+    for (size_t i = 0; i < obstacle_count; i++) {
+      if (obstacles[i].x == dino->x) {
+        collision_iminent = true;
+        break;
+      }
+    }
     dino->state = GROUND;
+    if (!collision_iminent) dino->y = 1;
   }
 }
 

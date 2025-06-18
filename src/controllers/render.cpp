@@ -18,17 +18,15 @@ void loadSprites() {
 }
 
 void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count, bool show_score) {
-  char _score[17];
 
   if (millis() - _last_render >= GAME_TIME) {
     if (show_score) {
-      sprintf(_score, "SCORE: %ld", score);
-      lcd.setCursor((16 - strlen(_score)) / 2, 0);
-      lcd.print(_score);
+      lcd.setCursor(3, 0);
+      lcd.print("SCORE: "); lcd.print(score);
     }
 
     if (!button || dino->state != GROUND) {
-      jump(dino);
+      jump(dino, obstacles, obstacle_count);
     }
 
     if (dino->last_y != dino->y) {

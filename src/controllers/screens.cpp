@@ -47,6 +47,8 @@ screens gameScreen() {
 screens endScreen() {
   char _score[17];
 
+  clearLine(0);
+
   for (size_t i = 0; i < strlen(_ending); i++) {
     lcd.setCursor(((16 - strlen(_ending)) / 2) + i, 0);
     lcd.print(_ending[i]);
@@ -56,13 +58,17 @@ screens endScreen() {
   delay(1000);
 
   sprintf(_score, "SCORE: %lu", score);
-  lcd.setCursor(0, 0);
-  lcd.print("               ");
+  clearLine(0);
   for (size_t i = 0; i < strlen(_score); i++) {
-    lcd.setCursor(((16 - strlen(_score)) / 2) + i, 0);
+    lcd.setCursor(3 + i, 0);
     lcd.print(_score[i]);
     delay(200);
   }
 
   return END;
+}
+
+void clearLine(uint8_t y) {
+  lcd.setCursor(1, y);
+  lcd.print("              ");
 }
