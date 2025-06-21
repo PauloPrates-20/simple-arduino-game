@@ -1,10 +1,12 @@
 #include "render.h"
 #include "frame.h"
+#include "screens.h"
 #include <LiquidCrystal.h>
 
 extern LiquidCrystal lcd;
 extern bool button;
 extern int32_t score;
+extern screens currentScreen;
 static unsigned long _last_render = 0;
 
 void loadSprites() {
@@ -18,7 +20,6 @@ void loadSprites() {
 }
 
 void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count, bool show_score) {
-
   if (millis() - _last_render >= GAME_TIME) {
     if (show_score) {
       lcd.setCursor(3, 0);
@@ -50,7 +51,7 @@ void renderGame(Dino* dino, Obstacle* obstacles, size_t obstacle_count, bool sho
       }
     }
 
-    score++;
+    if (currentScreen == GAME) score++;
 
     _last_render = millis();
   }
